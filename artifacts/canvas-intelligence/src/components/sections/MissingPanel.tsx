@@ -1,56 +1,56 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { AlertCircle, AlertTriangle, Info, Eye, CheckCircle2, X } from "lucide-react";
+import { AlertCircle, AlertTriangle, Info, Eye, CheckCircle2, X, Sparkles, Palette } from "lucide-react";
 import { useCanvas } from "@/contexts/CanvasContext";
 
 const ALL_GAPS = [
   {
     id: "g1",
-    type: "critical" as const,
+    type: "Structural Gap" as const,
     text: "No empty state defined for failed identity verification.",
     intent: "Create onboarding for a fintech app",
-    icon: AlertCircle,
-    color: "text-rose-600",
-    bg: "bg-rose-50",
-    border: "border-rose-200",
-    barColor: "bg-rose-400",
+    icon: Sparkles,
+    color: "text-primary",
+    bg: "bg-primary/5",
+    border: "border-primary/10",
+    barColor: "bg-primary/40",
   },
   {
     id: "g2",
-    type: "critical" as const,
+    type: "Structural Gap" as const,
     text: "The user has no recovery path after payment failure.",
     intent: "Map the checkout flow for a restaurant marketplace",
-    icon: AlertCircle,
-    color: "text-rose-600",
-    bg: "bg-rose-50",
-    border: "border-rose-200",
-    barColor: "bg-rose-400",
+    icon: Sparkles,
+    color: "text-primary",
+    bg: "bg-primary/5",
+    border: "border-primary/10",
+    barColor: "bg-primary/40",
   },
   {
     id: "g3",
-    type: "warning" as const,
+    type: "Logic Gap" as const,
     text: "The flow jumps from account creation to funding without explaining trust.",
     intent: "Create onboarding for a fintech app",
-    icon: AlertTriangle,
-    color: "text-amber-600",
-    bg: "bg-amber-50",
-    border: "border-amber-200",
-    barColor: "bg-amber-400",
+    icon: Info,
+    color: "text-indigo-600",
+    bg: "bg-indigo-50",
+    border: "border-indigo-200",
+    barColor: "bg-indigo-400",
   },
   {
     id: "g4",
-    type: "warning" as const,
+    type: "Pattern Inconsistency" as const,
     text: "Two button patterns appear to solve the same action.",
     intent: "Design a mobile AI assistant for launch decisions",
-    icon: AlertTriangle,
-    color: "text-amber-600",
-    bg: "bg-amber-50",
-    border: "border-amber-200",
-    barColor: "bg-amber-400",
+    icon: Palette,
+    color: "text-emerald-600",
+    bg: "bg-emerald-50",
+    border: "border-emerald-200",
+    barColor: "bg-emerald-400",
   },
   {
     id: "g5",
-    type: "info" as const,
+    type: "UX Friction" as const,
     text: "Notification permissions are introduced too early in the flow.",
     intent: "Map the checkout flow for a restaurant marketplace",
     icon: Info,
@@ -78,17 +78,17 @@ export function MissingPanel() {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/60" />
 
         <div className="relative w-full max-w-sm aspect-square opacity-70">
-          <div className="absolute top-[20%] left-[18%] w-36 h-44 bg-white border border-indigo-200 rounded-lg shadow-sm" />
-          <div className="absolute top-[25%] right-[15%] w-36 h-44 bg-white border-2 border-rose-400 rounded-lg shadow-sm ring-4 ring-rose-500/20" />
+          <div className="absolute top-[20%] left-[18%] w-36 h-44 bg-white border border-border/60 rounded-lg shadow-sm" />
+          <div className="absolute top-[25%] right-[15%] w-36 h-44 bg-transparent border-2 border-dashed border-primary/40 rounded-lg shadow-sm" />
 
           {/* pulsing highlight on the gap frame */}
           <motion.div
-            animate={{ scale: [1, 1.06, 1], opacity: [0.4, 0.15, 0.4] }}
-            transition={{ duration: 2.2, repeat: Infinity }}
-            className="absolute top-[25%] right-[15%] w-36 h-44 bg-rose-400/20 rounded-lg pointer-events-none"
+            animate={{ opacity: [0.1, 0.2, 0.1] }}
+            transition={{ duration: 3, repeat: Infinity }}
+            className="absolute top-[25%] right-[15%] w-36 h-44 bg-primary/10 rounded-lg pointer-events-none"
           />
 
-          <svg className="absolute inset-0 w-full h-full stroke-indigo-200" fill="none">
+          <svg className="absolute inset-0 w-full h-full stroke-primary/10" fill="none">
             <path d="M 170 170 L 240 190" strokeWidth="2" strokeDasharray="5 4" />
           </svg>
 
@@ -97,9 +97,9 @@ export function MissingPanel() {
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="absolute top-[20%] right-[12%] translate-x-full -translate-y-2 bg-rose-500 text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-sm whitespace-nowrap"
+            className="absolute top-[20%] right-[12%] translate-x-full -translate-y-2 bg-primary text-white text-[9px] font-bold px-2 py-0.5 rounded shadow-sm whitespace-nowrap uppercase tracking-widest"
           >
-            Gap detected
+            Structural Gap
           </motion.div>
         </div>
       </div>
@@ -109,11 +109,11 @@ export function MissingPanel() {
         <div className="p-8 border-b border-border">
           <div className="flex items-start justify-between">
             <div>
-              <h2 className="text-2xl font-medium tracking-tight mb-2">Gap Analysis</h2>
+              <h2 className="text-2xl font-medium tracking-tight mb-1">Intelligence Review</h2>
               <p className="text-muted-foreground text-sm">
                 {remaining.length > 0
-                  ? `${remaining.length} issue${remaining.length !== 1 ? "s" : ""} require attention`
-                  : "All gaps resolved — canvas is structurally sound"}
+                  ? `${remaining.length} structural gap${remaining.length !== 1 ? "s" : ""} identified`
+                  : "Flow architecture is complete"}
               </p>
             </div>
             {resolvedCount > 0 && (

@@ -35,7 +35,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             className="text-5xl lg:text-7xl font-medium tracking-tight leading-[1.05] text-foreground mb-6"
           >
-            The canvas should help you think.
+            Where design intent meets system logic.
           </motion.h1>
           
           <motion.p
@@ -84,44 +84,60 @@ export function HeroSection() {
               >
                 {/* Simulated Canvas Objects in Hero */}
                 <motion.div 
-                  className="absolute top-20 left-10 w-48 h-32 bg-yellow-50 border border-yellow-200/50 shadow-sm p-4 rotate-[-3deg]"
+                  className="absolute top-20 left-10 w-48 h-32 bg-[#FEFCE8] border border-[#FEF08A]/60 shadow-sm p-4 rotate-[-3deg]"
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <p className="text-sm font-medium text-amber-900/80 leading-relaxed font-mono">Trust is earned, not assumed</p>
+                  <div className="absolute -top-1.5 -left-1.5 w-3 h-3 bg-white/40 border border-amber-200 rotate-45" />
+                  <p className="text-sm font-medium text-amber-900/70 leading-relaxed font-mono">Trust is earned, not assumed</p>
                 </motion.div>
                 
                 <motion.div 
-                  className="absolute top-40 right-10 w-56 h-40 bg-white border border-indigo-200 shadow-md p-4 rounded-md"
+                  className="absolute top-40 right-10 w-56 h-40 bg-background border border-border shadow-md p-4 rounded-lg"
                   initial={{ x: 20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <div className="text-[10px] font-mono text-indigo-500 mb-2 font-medium uppercase tracking-wider">Frame / Onboarding</div>
-                  <div className="w-full h-2 bg-muted rounded-full mb-2" />
-                  <div className="w-3/4 h-2 bg-muted rounded-full mb-6" />
-                  <div className="w-full h-8 bg-indigo-50 border border-indigo-100 rounded flex items-center justify-center">
-                    <span className="text-xs text-indigo-700 font-medium">Continue</span>
-                  </div>
+                  <div className="text-[10px] font-mono text-muted-foreground mb-3 font-semibold uppercase tracking-wider">Identity Verification</div>
+                  <div className="w-12 h-12 rounded-full bg-muted/30 mx-auto mb-4" />
+                  <div className="w-full h-1.5 bg-muted/40 rounded-full mb-2" />
+                  <div className="w-3/4 h-1.5 bg-muted/40 rounded-full mx-auto" />
                 </motion.div>
 
                 <motion.div 
-                  className="absolute bottom-20 left-32 w-64 p-3 bg-violet-50 border border-violet-200 shadow-sm rounded-md flex items-start gap-3"
+                  className="absolute bottom-16 left-32 w-64 p-3 bg-primary/5 border border-primary/20 shadow-sm rounded-xl flex flex-col gap-2"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <Sparkles className="w-4 h-4 text-violet-500 mt-0.5 flex-shrink-0" />
-                  <p className="text-xs text-violet-900 font-medium leading-snug">Consider adding a trust explanation before requesting SSN</p>
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-primary" />
+                    <span className="text-[10px] font-bold text-primary uppercase tracking-widest">AI Synthesis</span>
+                  </div>
+                  <p className="text-xs text-foreground/80 font-medium leading-snug">Consider adding a trust explanation before requesting SSN</p>
+                </motion.div>
+
+                <motion.div 
+                  className="absolute bottom-40 left-10 w-44 border-2 border-dashed border-primary/20 rounded-lg p-3 bg-primary/[0.02]"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                >
+                   <div className="flex items-center gap-1.5 mb-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary/40 animate-pulse" />
+                    <span className="text-[9px] font-bold text-primary/60 uppercase tracking-widest">Structural Gap</span>
+                  </div>
+                  <div className="w-full h-1 bg-primary/10 rounded-full mb-1" />
+                  <div className="w-2/3 h-1 bg-primary/10 rounded-full" />
                 </motion.div>
                 
                 {/* Connecting lines SVG */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-border/80" fill="none">
+                <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-primary/10" fill="none">
                   <motion.path 
                     d="M 190 140 C 250 140, 250 200, 310 200" 
-                    strokeWidth="1.5"
-                    strokeDasharray="4 4"
+                    strokeWidth="2"
+                    strokeDasharray="5 5"
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
                     transition={{ duration: 1.5, delay: 1 }}
@@ -129,7 +145,7 @@ export function HeroSection() {
                 </svg>
               </motion.div>
             </div>
-          )}
+          ) }
         </div>
         
       </div>
