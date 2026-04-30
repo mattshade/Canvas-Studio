@@ -1,0 +1,226 @@
+Build a polished portfolio-grade web app called Canvas Intelligence.
+
+Tagline:
+Turning messy ideas into structured design thinking.
+
+The app should feel like a speculative product concept for the future of design tools. It should demonstrate how AI can help designers think on the canvas, not just generate UI.
+
+The product should simulate an intelligent canvas where rough notes, frames, components, research snippets, and ideas are organized into flows, clusters, gaps, and design system patterns.
+
+Build with React, TypeScript, Tailwind, and local mock data only. No backend or API keys.
+
+Visual direction:
+Use a Figma-adjacent, design-tool-inspired aesthetic without copying Figma branding, logos, or exact UI.
+
+The style should feel:
+- Light
+- Spacious
+- Canvas-first
+- Refined
+- Systematic
+- Collaborative
+- Productive
+- Calm but highly capable
+
+Use:
+- Warm white background
+- Soft neutral panels
+- Precise borders
+- Subtle shadows
+- Crisp typography
+- Color-coded nodes
+- Floating toolbars
+- Canvas objects
+- Multiplayer cursor simulation
+- Smooth micro-interactions
+- Subtle AI suggestions
+
+Do not make this look like a dashboard. It should feel like a visual thinking tool.
+
+Core product concept:
+The user starts with messy design inputs on a canvas. The system helps organize them into a usable product structure.
+
+Example input:
+“Design onboarding for a fintech app.”
+
+The canvas should generate and organize:
+- Ideas
+- User goals
+- Journey steps
+- Screens
+- Missing states
+- Edge cases
+- Component patterns
+- Open questions
+- Design system suggestions
+
+Major sections:
+
+1. Hero
+Create an editorial hero that introduces the concept.
+
+Hero title:
+The canvas should help you think.
+
+Hero copy:
+Canvas Intelligence turns scattered ideas, frames, and notes into structured flows, system maps, and design decisions.
+
+Add a subtle animated hero:
+Floating notes, frames, and sticky ideas drift around the canvas, then snap into organized clusters and connected flows.
+
+2. Interactive Canvas
+Create the main canvas experience.
+
+Include:
+- Sticky notes
+- Frame cards
+- Component cards
+- Research quotes
+- Flow nodes
+- Connection lines
+- AI suggestion cards
+- Missing-state warnings
+- Design system pattern callouts
+
+The canvas should feel spatial and interactive.
+
+Allow users to:
+- Add a new idea
+- Select canvas objects
+- View AI suggestions
+- Toggle between messy view and structured view
+- Highlight gaps
+- Show flow connections
+- Show design system opportunities
+
+3. Intent to Structure
+Add a panel where users type an intent.
+
+Example prompts:
+- “Create onboarding for a fintech app”
+- “Map the checkout flow for a restaurant marketplace”
+- “Design a mobile AI assistant for launch decisions”
+
+When a prompt is selected, update the canvas with realistic content.
+
+For each prompt, generate:
+- User journey
+- Suggested screens
+- Key states
+- Missing edge cases
+- Design system needs
+- Open product questions
+
+Use mock logic. No real AI required.
+
+4. What’s Missing Panel
+Create an AI critique panel that identifies gaps.
+
+Examples:
+- “No empty state defined for failed identity verification.”
+- “The user has no recovery path after payment failure.”
+- “The flow jumps from account creation to funding without explaining trust.”
+- “Two button patterns appear to solve the same action.”
+- “Notification permissions are introduced too early.”
+
+5. Flow Stitching
+Show how scattered frames become a connected user journey.
+
+Include:
+- Before state with disconnected frames
+- After state with connected flow
+- Suggested connections
+- Decision points
+- Branches
+- Error paths
+
+6. Design Diff
+Create a view that shows how the design evolved.
+
+Show:
+- Original idea
+- AI-suggested structure
+- Designer edits
+- Final flow
+- Rationale for changes
+
+Make this feel like version history for design thinking.
+
+7. Multiplayer Thinking
+Simulate collaboration.
+
+Show:
+- Designer cursor
+- Product manager cursor
+- Engineer cursor
+- AI collaborator cursor
+
+Each collaborator should leave comments:
+- Designer focuses on interaction clarity
+- PM focuses on activation and conversion
+- Engineer focuses on feasibility
+- AI focuses on missing states and system consistency
+
+8. Design System Awareness
+Create a section that shows detected patterns.
+
+Include:
+- Repeated components
+- Inconsistent button styles
+- Missing loading states
+- Reused layout patterns
+- Token suggestions
+- Component candidates
+
+Show how the system turns repeated UI decisions into reusable patterns.
+
+9. Case Study View
+Include a portfolio-style explanation inside the app.
+
+Sections:
+- Design Challenge
+- Core Insight
+- Systems Model
+- Interaction Model
+- Trust and Control
+- What This Demonstrates
+
+10. Design System Page
+Document the app’s own UI system.
+
+Show:
+- Typography
+- Color tokens
+- Node styles
+- Sticky notes
+- Frame cards
+- Suggestion cards
+- Comment bubbles
+- Flow connectors
+- Toolbar patterns
+- Empty states
+- Motion principles
+
+Important UX goals:
+The value should be clear in 10 seconds.
+
+A viewer should immediately understand:
+- This is not an AI UI generator
+- It is a thinking layer for the design canvas
+- It helps designers organize, critique, and evolve ideas
+- It supports collaboration
+- It bridges product thinking, systems thinking, and design craft
+
+Portfolio callouts:
+Add three explicit callouts in the app.
+
+1. Design Challenge
+Design tools are great for execution, but early product thinking is still messy, fragmented, and hard to structure.
+
+2. Systems Model
+Canvas Intelligence connects ideas, frames, flows, comments, components, and decisions into one visible system.
+
+3. Design Principle
+AI should not replace the designer’s judgment. It should make gaps, structure, and tradeoffs easier to see.
+
+Make the final app polished enough to demo in interviews for Figma, AI product design, design systems, product design, and design engineering roles.

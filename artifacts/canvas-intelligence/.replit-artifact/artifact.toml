@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Canvas Intelligence"
+version = "1.0.0"
+id = "artifacts/canvas-intelligence"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21355
+
+[services.development]
+run = "pnpm --filter @workspace/canvas-intelligence run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/canvas-intelligence", "run", "build" ]
+publicDir = "artifacts/canvas-intelligence/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21355"
+BASE_PATH = "/"
