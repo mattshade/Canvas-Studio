@@ -8,6 +8,7 @@ import { Multiplayer } from "@/components/sections/Multiplayer";
 import { SystemAwareness } from "@/components/sections/SystemAwareness";
 import { CaseStudy } from "@/components/sections/CaseStudy";
 import { DesignSystemDoc } from "@/components/sections/DesignSystemDoc";
+import { Footer } from "@/components/sections/Footer";
 import { CanvasProvider } from "@/contexts/CanvasContext";
 
 export function Home() {
@@ -26,6 +27,7 @@ export function Home() {
           <CaseStudy />
           <DesignSystemDoc />
         </main>
+        <Footer />
       </div>
     </CanvasProvider>
   );
