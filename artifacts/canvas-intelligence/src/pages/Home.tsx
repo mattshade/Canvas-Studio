@@ -8,22 +8,25 @@ import { Multiplayer } from "@/components/sections/Multiplayer";
 import { SystemAwareness } from "@/components/sections/SystemAwareness";
 import { CaseStudy } from "@/components/sections/CaseStudy";
 import { DesignSystemDoc } from "@/components/sections/DesignSystemDoc";
+import { CanvasProvider } from "@/contexts/CanvasContext";
 
 export function Home() {
   return (
-    <div className="w-full min-h-screen bg-background">
-      <TopNav />
-      <main>
-        <HeroSection />
-        <InteractiveCanvas />
-        <MissingPanel />
-        <FlowStitching />
-        <DesignDiff />
-        <Multiplayer />
-        <SystemAwareness />
-        <CaseStudy />
-        <DesignSystemDoc />
-      </main>
-    </div>
+    <CanvasProvider>
+      <div className="w-full min-h-screen bg-background">
+        <TopNav />
+        <main>
+          <HeroSection />
+          <InteractiveCanvas />
+          <MissingPanel />
+          <FlowStitching />
+          <DesignDiff />
+          <Multiplayer />
+          <SystemAwareness />
+          <CaseStudy />
+          <DesignSystemDoc />
+        </main>
+      </div>
+    </CanvasProvider>
   );
 }

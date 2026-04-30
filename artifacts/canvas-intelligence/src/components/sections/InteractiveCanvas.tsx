@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PenTool, MousePointer2, ListFilter, AlertCircle, ArrowRightLeft, Palette, Sparkles, MessageSquare } from "lucide-react";
+import { PenTool, MousePointer2, AlertCircle, ArrowRightLeft, Palette, Sparkles } from "lucide-react";
+import { useCanvas } from "@/contexts/CanvasContext";
 
 export function InteractiveCanvas() {
   const [viewMode, setViewMode] = useState<"messy" | "structured">("messy");
-  const [activeIntent, setActiveIntent] = useState<string>("Create onboarding for a fintech app");
+  const { activeIntent, setActiveIntent } = useCanvas();
 
   const intents = [
     "Create onboarding for a fintech app",

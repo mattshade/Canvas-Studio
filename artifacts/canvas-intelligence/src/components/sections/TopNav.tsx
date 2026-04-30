@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Map, Columns, Users, LayoutTemplate, BookOpen, PenTool } from "lucide-react";
 import { LoginModal, TryModal } from "@/components/AuthModals";
+import { useCanvas } from "@/contexts/CanvasContext";
 
 export function TopNav() {
   const [scrolled, setScrolled] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [tryOpen, setTryOpen] = useState(false);
+  const { openCanvas } = useCanvas();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -80,11 +82,21 @@ export function TopNav() {
       </header>
 
       <AnimatePresence>
-        {loginOpen && <LoginModal onClose={() => setLoginOpen(false)} />}
+        {loginOpen && (
+          <LoginModal
+            onClose={() => setLoginOpen(false)}
+            onOpenCanvas={(intent) => { setLoginOpen(false); openCanvas(intent); }}
+          />
+        )}
       </AnimatePresence>
 
       <AnimatePresence>
-        {tryOpen && <TryModal onClose={() => setTryOpen(false)} />}
+        {tryOpen && (
+          <TryModal
+            onClose={() => setTryOpen(false)}
+            onOpenCanvas={(intent) => { setTryOpen(false); openCanvas(intent); }}
+          />
+        )}
       </AnimatePresence>
     </>
   );

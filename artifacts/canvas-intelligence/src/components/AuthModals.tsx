@@ -82,14 +82,23 @@ function MiniCanvas({ nodes, lines }: typeof WORKSPACES[0]) {
   );
 }
 
-export function LoginModal({ onClose }: { onClose: () => void }) {
+const WORKSPACE_INTENTS = [
+  "Create onboarding for a fintech app",
+  "Map the checkout flow for a restaurant marketplace",
+  "Design a mobile AI assistant for launch decisions",
+];
+
+export function LoginModal({ onClose, onOpenCanvas }: { onClose: () => void; onOpenCanvas: (intent: string) => void }) {
   const [selected, setSelected] = useState<number | null>(null);
   const [entering, setEntering] = useState(false);
 
   const handleOpen = (i: number) => {
     setSelected(i);
     setEntering(true);
-    setTimeout(() => onClose(), 900);
+    setTimeout(() => {
+      onClose();
+      onOpenCanvas(WORKSPACE_INTENTS[i]);
+    }, 900);
   };
 
   return (
@@ -235,7 +244,7 @@ const BUILD_STEPS = [
 
 type Step = "name" | "building" | "ready";
 
-export function TryModal({ onClose }: { onClose: () => void }) {
+export function TryModal({ onClose, onOpenCanvas }: { onClose: () => void; onOpenCanvas: (intent: string) => void }) {
   const [step, setStep] = useState<Step>("name");
   const [value, setValue] = useState("");
   const [placeholder, setPlaceholder] = useState(SUGGESTIONS[0]);
@@ -525,10 +534,10 @@ export function TryModal({ onClose }: { onClose: () => void }) {
 
                 <div className="flex gap-3 w-full max-w-xs">
                   <button
-                    onClick={onClose}
+                    onClick={() => { onClose(); onOpenCanvas(value); }}
                     className="flex-1 h-10 text-sm font-medium bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-colors"
                   >
-                    Explore canvas
+                    Open my canvas
                   </button>
                   <button
                     onClick={onClose}
