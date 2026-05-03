@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   ApiError,
+  ResponseParseError,
   customFetch,
   setAuthTokenGetter,
   setBaseUrl,
@@ -122,5 +123,106 @@ describe("customFetch", () => {
     const init = fetchMock.mock.calls[0][1] as RequestInit;
     const headers = new Headers(init.headers);
     expect(headers.get("authorization")).toBe("Bearer explicit");
+  });
+
+  it("sets Content-Type for JSON-looking string bodies when omitted", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(jsonOk({ ok: true }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    await customFetch("/post", {
+      method: "POST",
+      body: '{"a":1}',
+      responseType: "json",
+    });
+
+    const init = fetchMock.mock.calls[0][1] as RequestInit;
+    const headers = new Headers(init.headers);
+    expect(headers.get("content-type")).toMatch(/application\/json/);
+  });
+
+  it("returns text when responseType is text", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        new Response("plain", {
+          status: 200,
+          headers: { "content-type": "text/plain" },
+        }),
+      ),
+    );
+
+    const text = await customFetch("/doc", { responseType: "text" });
+    expect(text).toBe("plain");
+  });
+
+  it("returns null for 204 responses with JSON responseType", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(new Response(null, { status: 204 })),
+    );
+
+    const data = await customFetch("/gone", { responseType: "json" });
+    expect(data).toBeNull();
+  });
+
+  it("throws ResponseParseError when JSON success body is invalid", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        new Response("not-json", {
+          status: 200,
+          headers: { "content-type": "application/json" },
+        }),
+      ),
+    );
+
+    await expect(
+      customFetch("/bad-json", { responseType: "json" }),
+    ).rejects.toBeInstanceOf(ResponseParseError);
+  });
+});
+
+describe("ApiError", () => {
+  const req = { method: "GET", url: "/x" };
+
+  function httpResponse(status: number, statusText: string) {
+    return new Response(null, { status, statusText });
+  }
+
+  it("formats message from detail field", () => {
+    const err = new ApiError(httpResponse(404, "Not Found"), { detail: "Nope" }, req);
+    expect(err.message).toContain("404");
+    expect(err.message).toContain("Nope");
+    expect(err.status).toBe(404);
+  });
+
+  it("formats message from title and detail", () => {
+    const err = new ApiError(
+      httpResponse(400, "Bad Request"),
+      { title: "Bad", detail: "Worse" },
+      req,
+    );
+    expect(err.message).toContain("Bad");
+    expect(err.message).toContain("Worse");
+    expect(err.message).toContain("—");
+  });
+
+  it("prefers message over title when detail is absent", () => {
+    const err = new ApiError(
+      httpResponse(422, "Unprocessable"),
+      { title: "T", message: "M" },
+      req,
+    );
+    expect(err.message).toContain("M");
+  });
+
+  it("formats string error bodies", () => {
+    const err = new ApiError(httpResponse(500, "Err"), "  boom  ", req);
+    expect(err.message).toContain("boom");
+  });
+
+  it("uses HTTP prefix only when string body is whitespace", () => {
+    const err = new ApiError(httpResponse(400, "Bad"), "   \n", req);
+    expect(err.message).toBe("HTTP 400 Bad");
   });
 });
